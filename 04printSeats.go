@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func seatNAMES(totalSeats []seatType) ([]string, []int) {
 	p := fmt.Println
@@ -11,30 +14,37 @@ func seatNAMES(totalSeats []seatType) ([]string, []int) {
 		tempBookedStatus = append(tempBookedStatus, totalSeats[i].BookedStatus)
 
 	}
+	length := len(eachSeat)
 	p()
 	p()
 	p("		  SEATS")
-
-	printLoop(0, 6, eachSeat, tempBookedStatus, "A4")
-	printLoop(6, 12, eachSeat, tempBookedStatus, "B4")
-	printLoop(12, 18, eachSeat, tempBookedStatus, "C4")
+	for i := 0; i < length; i++ {
+		if i%6 == 0 {
+			printLoop(i, i+6, eachSeat, tempBookedStatus)
+		}
+	}
+	// printLoop(0, 6, eachSeat, tempBookedStatus)
+	// printLoop(6, 12, eachSeat, tempBookedStatus)
+	// printLoop(12, 18, eachSeat, tempBookedStatus)
+	// printLoop(18, 24, eachSeat, tempBookedStatus)
 	return eachSeat, tempBookedStatus
 }
 
-func printLoop(m, n int, eachSeat []string, tempBookedStatus []int, partitionSeat string) {
+func printLoop(m, n int, eachSeat []string, tempBookedStatus []int) {
 	f := fmt.Print
 	p := fmt.Println
 	p()
 	for i := m; i < n; i++ {
 		if tempBookedStatus[i] == 1 {
-			if eachSeat[i] == partitionSeat {
+			// if eachSeat[i] == partitionSeat {
+			if strings.Contains(eachSeat[i], "4") {
 				f("         --  ")
 			} else {
 				f("  --  ")
 			}
 
 		} else {
-			if eachSeat[i] == partitionSeat {
+			if strings.Contains(eachSeat[i], "4") {
 				f("         ", eachSeat[i], "  ")
 			} else {
 				f("  ", eachSeat[i], "  ")
@@ -42,5 +52,6 @@ func printLoop(m, n int, eachSeat []string, tempBookedStatus []int, partitionSea
 		}
 
 	}
+	p()
 	p()
 }
