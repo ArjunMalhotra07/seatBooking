@@ -8,6 +8,7 @@ func bookFlightSeat() {
 	p := fmt.Println
 	seats := seating()
 	eachSeat, tempBookedStatus := seatNAMES(seats)
+
 	p()
 	p()
 	p()
