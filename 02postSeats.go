@@ -18,13 +18,12 @@ func bookSeating(c *gin.Context) {
 		return
 	}
 
-	_, err := db.Exec(`UPDATE bookSeat SET seatID = ? , bookedStatus = ? WHERE seatID = ?`,
-		seatData.SeatID,
+	_, err := db.Exec(`UPDATE bookSeat SET  bookedStatus = ? WHERE seatID = ?`,
 		seatData.BookedStatus,
 		seatData.SeatID)
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	c.IndentedJSON(200, "Successfully Altered Data")
+	c.IndentedJSON(200, "Successfully Updates MySql Database")
 }
