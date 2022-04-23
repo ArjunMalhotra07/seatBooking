@@ -34,57 +34,27 @@ func seatNAMES(vacantSeats []seatType) {
 	p()
 	p("		  SEATS")
 
+	printLoop(0, 6, eachSeat, tempBookedStatus, "A4")
+	printLoop(6, 12, eachSeat, tempBookedStatus, "B4")
+	printLoop(12, 18, eachSeat, tempBookedStatus, "C4")
+}
+
+func printLoop(m, n int, eachSeat []string, tempBookedStatus []int, seatID string) {
+	f := fmt.Print
+	p := fmt.Println
 	p()
-	for i := 0; i < 6; i++ {
+	for i := m; i < n; i++ {
 
 		if tempBookedStatus[i] == 1 {
-			if strings.Contains(eachSeat[i], "A4") {
-				f("       --  ")
+			if strings.Contains(eachSeat[i], seatID) {
+				f("         --  ")
 			} else {
 				f("  --  ")
 			}
 
 		} else {
-			if strings.Contains(eachSeat[i], "A4") {
-				f("       ", eachSeat[i], "  ")
-			} else {
-				f("  ", eachSeat[i], "  ")
-			}
-		}
-
-	}
-	p()
-	for i := 6; i < 12; i++ {
-
-		if tempBookedStatus[i] == 1 {
-			if strings.Contains(eachSeat[i], "B4") {
-				f("       --  ")
-			} else {
-				f("  --  ")
-			}
-
-		} else {
-			if strings.Contains(eachSeat[i], "B4") {
-				f("       ", eachSeat[i], "  ")
-			} else {
-				f("  ", eachSeat[i], "  ")
-			}
-		}
-
-	}
-	p()
-	for i := 12; i < 18; i++ {
-
-		if tempBookedStatus[i] == 1 {
-			if strings.Contains(eachSeat[i], "C4") {
-				f("       --  ")
-			} else {
-				f("  --  ")
-			}
-
-		} else {
-			if strings.Contains(eachSeat[i], "C4") {
-				f("       ", eachSeat[i], "  ")
+			if strings.Contains(eachSeat[i], seatID) {
+				f("         ", eachSeat[i], "  ")
 			} else {
 				f("  ", eachSeat[i], "  ")
 			}
