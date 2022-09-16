@@ -23,10 +23,7 @@ func seatNAMES(totalSeats []seatType) ([]string, []int) {
 			printLoop(i, i+6, eachSeat, tempBookedStatus)
 		}
 	}
-	// printLoop(0, 6, eachSeat, tempBookedStatus)
-	// printLoop(6, 12, eachSeat, tempBookedStatus)
-	// printLoop(12, 18, eachSeat, tempBookedStatus)
-	// printLoop(18, 24, eachSeat, tempBookedStatus)
+
 	return eachSeat, tempBookedStatus
 }
 
@@ -36,7 +33,7 @@ func printLoop(m, n int, eachSeat []string, tempBookedStatus []int) {
 	p()
 	for i := m; i < n; i++ {
 		if tempBookedStatus[i] == 1 {
-			// if eachSeat[i] == partitionSeat {
+
 			if strings.Contains(eachSeat[i], "4") {
 				f("         --  ")
 			} else {

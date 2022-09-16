@@ -39,6 +39,6 @@ func main() {
 	route := gin.Default()
 	route.GET("/getSeats", totalSeats)
 	route.POST("/getSeats", bookSeating)
-	route.Run("localhost:8080")
+	route.Run("localhost:8082")
 
 }
